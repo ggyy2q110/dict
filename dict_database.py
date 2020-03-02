@@ -66,7 +66,7 @@ class DictDatabase:
             return False
 
     def dict_list_history(self, username):
-        sql = "select word,time from history where u_id = (select id from user where name = %s) limit 10; "
+        sql = "select word,time from history where u_id = (select id from user where name = %s) order by time desc limit 10; "
         self.cur.execute(sql, [username])
         info = self.cur.fetchall()
         return info
